@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  
+  commercedb:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+
+  commerce.api:
+    image: ${DOCKER_REGISTRY-}commerce.api
+    build:
+      context: .
+      dockerfile: SimpleCommerceProject.API/Dockerfile

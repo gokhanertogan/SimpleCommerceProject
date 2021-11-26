@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+
+  commercedb:
+    container_name: commercedb
+    environment:
+        MSSQL_SA_PASSWORD: "Case1234"
+        ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+        - "1433:1433"   
+
+  commerce.api:
+    container_name: commerce.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:CommerceConnectionString=Server=commercedb;Database=CommerceDB;User Id=sa;Password=Case1234"
+    depends_on:
+      - commercedb
+    ports:
+      - "8001:80"
