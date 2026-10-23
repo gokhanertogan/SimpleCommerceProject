@@ -19,7 +19,7 @@ namespace SimpleCommerceProject.Data.Models.Infrastructure.Context
                     sleepDurationProvider: retry => TimeSpan.FromSeconds(5),
                     onRetry: (exception, timespan, retry, ctx) =>
                     {
-                        logger.LogWarning(exception, "[{prefix}] Exception {ExceptionType} with message {Message} detected on attemp {retry} of {}");
+                        logger.LogWarning(exception, "[{prefix}] Exception {ExceptionType} with message {Message} detected on attempt {retry} of {retries}", nameof(CommerceContextSeed), exception.GetType().Name, exception.Message, retry, 3);
                     }
                 );
 

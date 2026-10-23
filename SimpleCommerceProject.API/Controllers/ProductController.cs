@@ -46,7 +46,7 @@ namespace SimpleCommerceProject.API.Controllers
             return CreateActionResultInstance(response);
         }
 
-        [HttpGet("GetByName/{productName}")]
+        [HttpGet("{productName}")]
         public async Task<IActionResult> GetByName(string productName)
         {
             var productResponse = await _productService.GetByNameAsync(productName);
@@ -55,7 +55,7 @@ namespace SimpleCommerceProject.API.Controllers
         }
 
         [ResponseCache(Duration =10)]
-        [HttpGet("GetListByCategoryName/{categoryName}")]
+        [HttpGet("{categoryName}")]
         public async Task<IActionResult> GetListByCategoryName(string categoryName)
         {
             var productListResponse = await _productService.GetListByCategoryNameAsync(categoryName);
@@ -72,7 +72,7 @@ namespace SimpleCommerceProject.API.Controllers
             return CreateActionResultInstance(productListResponse);
         }
 
-        [HttpPost("/GetListByProductAttributes")]
+        [HttpPost]
         public async Task<IActionResult> GetListByProductAttributes(IEnumerable<ProductsAttributesValueResource> productsAttributesValues)
         {
             var productListResponse = await _productService.GetListByProductAttributesAsync(productsAttributesValues);

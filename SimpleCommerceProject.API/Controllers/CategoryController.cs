@@ -46,7 +46,7 @@ namespace SimpleCommerceProject.API.Controllers
             return CreateActionResultInstance(response);
         }
 
-        [HttpPost("/GetByCategoryAttributes")]
+        [HttpPost("GetByCategoryAttributes")]
         public async Task<IActionResult> GetByCategoryAttributes(IEnumerable<AttributeResource> attributeList)
         {
             var response = await _categoryService.GetByCategoryAttributesAsync(attributeList);
